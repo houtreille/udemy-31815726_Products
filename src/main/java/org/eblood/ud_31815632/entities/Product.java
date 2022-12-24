@@ -2,6 +2,7 @@ package org.eblood.ud_31815632.entities;
 
 
 
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
