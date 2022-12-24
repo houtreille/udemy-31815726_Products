@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -31,8 +32,43 @@ class ProductRepositoryTest {
         List<Product> allProducts = productRepository.findAll();
 
         allProducts.contains(product);
+    }
 
+
+    @Test
+    public void testFindAll(){
+
+        long count = productRepository.count();
+
+        List<Product> products =  productRepository.findAll();
+
+        assertThat(products.size()).isEqualTo(count);
+    }
+
+    @Test
+    public void testDeleteById(){
+
+        List<Product> products =  productRepository.findAll();
+
+        Long productId = products.get(0).getProductId();
+        productRepository.deleteById(productId);
+
+        assertThat(productRepository.existsById(productId)).isFalse();
+    }
+
+
+    @Test
+    public void testUpdateById(){
+
+        List<Product> products =  productRepository.findAll();
+        Product productToUpdate = products.get(0);
+
+        productToUpdate.setProductPrice(1234d);
+        productRepository.save(productToUpdate);
+
+        assertThat(productRepository.findAll().contains(productToUpdate)).isEqualTo(Boolean.TRUE);
 
     }
+
 
 }

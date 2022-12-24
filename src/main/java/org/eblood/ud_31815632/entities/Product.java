@@ -3,6 +3,7 @@ package org.eblood.ud_31815632.entities;
 
 
 import lombok.Builder;
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -13,7 +14,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
-
+@EqualsAndHashCode
 @Getter
 @Setter
 @ToString
