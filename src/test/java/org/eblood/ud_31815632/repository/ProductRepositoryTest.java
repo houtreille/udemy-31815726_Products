@@ -2,10 +2,12 @@ package org.eblood.ud_31815632.repository;
 
 import org.eblood.ud_31815632.entities.Category;
 import org.eblood.ud_31815632.entities.Product;
+import org.eblood.ud_31815632.entities.QRCode;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.util.Collection;
 import java.util.Collections;
@@ -35,11 +37,15 @@ class ProductRepositoryTest {
         cat1.setCategoryName("Category#1");
         product.setCategory(cat1);
 
+        QRCode code = new QRCode();
+        code.setCode("111000110");
+        product.setQrCode(code);
+
         productRepository.save(product);
 
         List<Product> allProducts = productRepository.findAll();
 
-        allProducts.contains(product);
+      //  allProducts.contains(product);
     }
 
 
@@ -81,14 +87,14 @@ class ProductRepositoryTest {
 
     @Test
     void findProductsByProductName() {
-        List<Product> products =  productRepository.findProductsByProductName("A product");
+        List<Product> products =  productRepository.findProductsByProductName("P1");
 
         assertThat(products).hasAtLeastOneElementOfType(Product.class);
     }
 
     @Test
     void findProductsByPrice() {
-        List<Product> products =  productRepository.findProductsByPrice__(9d);
+        List<Product> products =  productRepository.findProductsByPrice__(1d);
 
         assertThat(products).hasAtLeastOneElementOfType(Product.class);
     }

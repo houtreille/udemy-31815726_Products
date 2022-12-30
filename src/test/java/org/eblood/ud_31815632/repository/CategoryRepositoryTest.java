@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -20,7 +21,17 @@ class CategoryRepositoryTest {
     private CategoryRepository repository;
 
     @Test
+    @Transactional
     public void testSaveWithoutProduct(){
+
+        Category cat1 = new Category();
+        cat1.setDescription("Category1");
+        cat1.setCategoryName("Category#1");
+    }
+
+
+    @Test
+    public void testSaveWithProduct(){
 
         Category cat1 = new Category();
         cat1.setDescription("Category1");
@@ -43,15 +54,23 @@ class CategoryRepositoryTest {
 
         repository.save(cat1);
 
-        repository.findAll();
+        List<Category> categories = repository.findAll();
+
+        /*if(categories.size() >= 1) {
+            List products = categories.get(0).getProducts();
+            //Needs @Transactional for this
+            products.forEach(o -> System.out.println(o));
+        }*/
+
     }
+
+
 
     @Test
     public void testDeleteProduct(){
         List<Category> cats = repository.findAll();
 
         repository.delete(cats.get(0));
-
     }
 
 

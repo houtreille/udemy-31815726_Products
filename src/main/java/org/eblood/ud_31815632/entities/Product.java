@@ -19,11 +19,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import java.util.Date;
 @EqualsAndHashCode
 @Getter
 @Setter
-@ToString
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -43,8 +43,11 @@ public class Product {
     @Column(name = "CREATION_DATE")
     private Date creationDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name="CATEGORY_FOREIGN_KEY_ID")
     private Category category;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private QRCode qrCode;
 
 }
