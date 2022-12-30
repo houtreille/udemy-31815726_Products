@@ -12,6 +12,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -34,5 +35,6 @@ public class Category {
 
     @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
     private List<Product> products = new ArrayList<>();
+
 
 }
