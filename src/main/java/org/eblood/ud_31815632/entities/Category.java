@@ -1,5 +1,6 @@
 package org.eblood.ud_31815632.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -27,13 +28,14 @@ public class Category {
     @Column(name = "KEY_ID")
     private Long idCategory;
 
-    @Column(name = "CATEGORY_NAME")
+    @Column(name = "CATEGORY_NAME", nullable = false)
     private String categoryName;
 
     @Column(name = "DESCRIPTION")
     private String description;
 
     @OneToMany (cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "category")
+    @JsonIgnore
     private List<Product> products = new ArrayList<>();
 
 

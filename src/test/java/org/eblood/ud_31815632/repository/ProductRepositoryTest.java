@@ -34,12 +34,12 @@ class ProductRepositoryTest {
 
         Category cat1 = new Category();
         cat1.setDescription("Category1");
-        cat1.setCategoryName("Category#1");
+        cat1.setCategoryName(null);
         product.setCategory(cat1);
 
-        QRCode code = new QRCode();
-        code.setCode("111000110");
-        product.setQrCode(code);
+        /*QRCode code = new QRCode();
+        code.setCode("111000110");*/
+       // product.setQrCode(code);
 
         productRepository.save(product);
 
