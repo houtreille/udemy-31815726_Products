@@ -19,8 +19,9 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     @Query("select p from Product p where p.productPrice >= :price")
     List<Product> findProductsByPrice__(@Param("price") Double price);
 
-   /* List<Product> findProductsByCategory(Category category);
+    List<Product> findProductsByCategoryIdCategory(Long categoryId);
 
+    /*
     @Query("select p from Product p where p.category = :category ")
     List<Product> findProductsByCategory__(@Param("category") Category category);*/
 }

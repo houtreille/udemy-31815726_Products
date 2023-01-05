@@ -2,6 +2,7 @@ package org.eblood.ud_31815632.entities;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -47,7 +48,7 @@ public class Product {
     @JoinColumn(name="CATEGORY_FOREIGN_KEY_ID")
     private Category category;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    private QRCode qrCode;
+    /*@OneToOne(cascade = CascadeType.ALL)
+    private QRCode qrCode;*/
 
 }

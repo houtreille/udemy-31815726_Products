@@ -1,5 +1,6 @@
 package org.eblood.ud_31815632.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Data;
 import lombok.Getter;
@@ -25,8 +26,9 @@ public class QRCode {
     @Column(name="CODE")
     private String code;
 
-    @OneToOne(mappedBy = "qrCode")
-    private Product product;
+   /* @OneToOne(mappedBy = "qrCode")
+    @JsonIgnore
+    private Product product;*/
 
 
 }
