@@ -17,10 +17,12 @@
     <td>{{ product.productName}}</td>
     <td>{{ product.productPrice | number }}</td>
     <td>{{ product.creationDate | date }}</td>
-    <td><button (click)="modify(product)">Modify</button> </td>
-    <td><button (click)="delete(product)">Delete</button> </td>
+    <td><a class="btn btn-danger" (click)="delete(product)">Delete</a> </td>
+    <td><a class="btn btn-secondary" (click)="modify(product)">Modify</a> </td>
   </tr>
   </tbody>
 </table>
+<div><h3>{{feedback}}</h3></div>
+
 </html>
 

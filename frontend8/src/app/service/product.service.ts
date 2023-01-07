@@ -30,9 +30,15 @@ export class ProductService {
     document.location.href = '/products/add-product/'+productToModify.productId;
   }
 
-  deleteProduct(productToDelete : Product) {
-    console.log("Delete " + productToDelete.productName);
+   deleteProduct(productToDelete : Product) : string {
+
+    const index = this.products.indexOf(productToDelete);
+
+    this.products.splice(index, 1);
+
+    return productToDelete.productName + " has been successfully deleted";
   }
+
 
 }
 
