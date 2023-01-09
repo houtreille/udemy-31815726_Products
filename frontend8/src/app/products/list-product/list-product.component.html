@@ -18,7 +18,7 @@
     <td>{{ product.productPrice | number }}</td>
     <td>{{ product.creationDate | date }}</td>
     <td><a class="btn btn-danger" (click)="delete(product)">Delete</a> </td>
-    <td><a class="btn btn-secondary" (click)="modify(product)">Modify</a> </td>
+    <td><a class="btn btn-success" [routerLink]="['/products/modify-product/',product.productId]">Modify</a> </td>
   </tr>
   </tbody>
 </table>
