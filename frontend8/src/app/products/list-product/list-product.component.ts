@@ -11,6 +11,8 @@ export class ListProductComponent implements OnInit {
 
   products : Product[];
 
+  feedback: string = "";
+
   constructor(private productService: ProductService) {
     this.products = productService.listProducts();
   }
@@ -22,7 +24,10 @@ export class ListProductComponent implements OnInit {
     this.productService.modidyProduct(product);
   }
 
-  delete(product : Product) {
-    this.productService.deleteProduct(product);
+  delete(product : Product)  {
+
+    if(confirm("Are you sure you want to delete " + product.productName)) {
+      this.feedback = this.productService.deleteProduct(product);
+    }
   }
 }
