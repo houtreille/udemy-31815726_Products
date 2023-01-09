@@ -6,6 +6,7 @@ import {Product} from "../model/product.model";
 })
 export class ProductService {
 
+
   products: Product[];
 
   constructor() {
@@ -24,10 +25,9 @@ export class ProductService {
     this.products.push(productToAdd);
   }
 
-  modidyProduct(productToModify : Product) {
-    //this.products.
-    console.log("Modify " + productToModify.productName);
-    document.location.href = '/products/add-product/'+productToModify.productId;
+  modifyProduct(productToModify : Product) {
+     this.deleteProduct(productToModify);
+     this.addProduct(productToModify);
   }
 
    deleteProduct(productToDelete : Product) : string {
@@ -37,6 +37,19 @@ export class ProductService {
     this.products.splice(index, 1);
 
     return productToDelete.productName + " has been successfully deleted";
+  }
+
+  getProduct(id : number) : Product {
+
+    var productToFind: Product = new Product();
+
+    for (let i = 0; i < this.products.length; i++) {
+      if(this.products[i].productId == id) {
+         productToFind = this.products[i];
+      }
+    }
+
+    return  productToFind;
   }
 
 

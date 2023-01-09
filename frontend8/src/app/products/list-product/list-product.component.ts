@@ -21,7 +21,7 @@ export class ListProductComponent implements OnInit {
   }
 
   modify(product : Product) {
-    this.productService.modidyProduct(product);
+    this.productService.modifyProduct(product);
   }
 
   delete(product : Product)  {

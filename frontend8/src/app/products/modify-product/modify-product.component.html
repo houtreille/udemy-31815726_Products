@@ -1,0 +1,22 @@
+<form>
+
+  <div class="col-sm-2 col-md-2 col-lg-2">
+    <label for="productId" class="form-label">Product ID</label>
+    <input disabled type= "text" [(ngModel)]="productToModify.productId" name="productId" id="productID" class="form-control">
+  </div>
+
+  <div class="col-sm-3 col-md-3 col-lg-3">
+    <label for="productName" class="form-label">Product Name</label>
+    <input type= "text" [(ngModel)]="productToModify.productName" name="productName" id="productName" class="form-control">
+  </div>
+
+  <div class="col-sm-3 col-md-3 col-lg-3">
+    <label for="productPrice" class="form-label">Product Price</label>
+    <input type= "number" [(ngModel)]="productToModify.productPrice" name="productPrice" id="productPrice" class="form-control">
+  </div>
+
+  <div class  =  "mt-2">
+    <button type="submit" (click)="modifyProduct(productToModify)" class="btn btn-success">Modify</button>
+  </div>
+
+</form>
