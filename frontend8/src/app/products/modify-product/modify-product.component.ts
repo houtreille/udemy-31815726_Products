@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from "../../model/product.model";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {ProductService} from "../../service/product.service";
 
 @Component({
@@ -12,9 +12,13 @@ export class ModifyProductComponent implements OnInit {
 
   productToModify: Product;
   productService: ProductService;
+  router : Router;
 
-  constructor(activatedRoute : ActivatedRoute, productService: ProductService) {
+  constructor(activatedRoute : ActivatedRoute,
+              productService: ProductService,
+              router : Router) {
     this.productService = productService;
+    this.router = router;
     var id: number = +activatedRoute.snapshot.params['id'];
     this.productToModify = productService.getProduct(id);
 
@@ -26,5 +30,6 @@ export class ModifyProductComponent implements OnInit {
 
   modifyProduct(productToModify: Product) {
     this.productService.modifyProduct(productToModify);
+    this.router.navigate(["/products/list-product"]);
   }
 }
