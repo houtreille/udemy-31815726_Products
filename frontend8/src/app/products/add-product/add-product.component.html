@@ -27,6 +27,17 @@
     <input type="date" [(ngModel)]="newProduct.productPrice" name="productDate" id="productDate">
   </div>
 
+  <div class="mb-3">
+    <label class="form-label">Category</label>
+   <select class="form-control form-control-lg" id="idCat" name="idCat" [(ngModel)]="newIdCat">
+     <option *ngFor="let cat of categories" [value]="cat.idCategory">
+       {{cat.description}}
+     </option>
+   </select>
+  </div>
+
+
+
   <!--div class="mb-3">
     <label for="productPrice" class="form-label">Product Price</label>
     <input type="number" [(ngModel)]="newProduct.productPrice" class="form-control" id="productPrice">

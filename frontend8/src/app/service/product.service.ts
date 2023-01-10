@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Product} from "../model/product.model";
+import {Category} from "../model/category.model";
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +9,19 @@ export class ProductService {
 
 
   products: Product[];
+  categories: Category[];
 
   constructor() {
+
+    this.categories = [
+      {idCategory : 1, categoryName : "Category1", description : "Categorie 1 Descriptiom"},
+      {idCategory : 2, categoryName : "Category2", description : "Categorie 2 Descriptiom"}
+    ]
+
     this.products = [
-      {productId : 1, productName : "ASUS", productPrice : 1000, creationDate : new Date("01/15/2022")},
-      {productId : 2, productName : "IPad Pro", productPrice : 2000, creationDate : new Date("06/15/2022")},
-      {productId : 3, productName : "Drone DJI3", productPrice : 600, creationDate : new Date("03/15/2022")}
+      {productId : 1, productName : "ASUS", productPrice : 1000, creationDate : new Date("01/15/2022")      , category : this.categories[0]},
+      {productId : 2, productName : "IPad Pro", productPrice : 2000, creationDate : new Date("06/15/2022")  , category : this.categories[0]},
+      {productId : 3, productName : "Drone DJI3", productPrice : 600, creationDate : new Date("03/15/2022") , category : this.categories[1]}
     ]
   }
 
@@ -50,6 +58,21 @@ export class ProductService {
     }
 
     return  productToFind;
+  }
+
+  listCategories():Category[]{
+    return this.categories;
+  }
+
+  getCategory(id : number) : Category {
+    var categoryFind: Category = new Category();
+
+    for (let i = 0; i < this.categories.length; i++) {
+      if(this.categories[i].idCategory == id) {
+        categoryFind = this.categories[i];
+      }
+    }
+    return  categoryFind;
   }
 
 
