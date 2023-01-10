@@ -8,6 +8,7 @@
     <th scope="col">Name</th>
     <th scope="col">Price</th>
     <th scope="col">creation Date</th>
+    <th scope="col">Category</th>
   </tr>
   </thead>
   <tbody>
@@ -17,6 +18,7 @@
     <td>{{ product.productName}}</td>
     <td>{{ product.productPrice | number }}</td>
     <td>{{ product.creationDate | date }}</td>
+    <td>{{ product.category.categoryName}}</td>
     <td><a class="btn btn-danger" (click)="delete(product)">Delete</a> </td>
     <td><a class="btn btn-success" [routerLink]="['/products/modify-product/',product.productId]">Modify</a> </td>
   </tr>
